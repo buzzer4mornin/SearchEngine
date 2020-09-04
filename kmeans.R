@@ -29,3 +29,12 @@ raw_data_df =
          GL_MONTH,
          GL_QRT,
          ZIP) %>%
+  filter(PRODUCT_GROUPING != 0) %>%
+  mutate(QUOTA_GROUPING = PRODUCT_GROUPING) %>%
+  mutate(QUOTA_GROUPING = gsub(pattern = " ", replacement = "_", QUOTA_GROUPING),
+         QUOTA_GROUPING = gsub(pattern = "-", replacement = "_", QUOTA_GROUPING),
+         QUOTA_GROUPING = gsub(pattern = "_&_", replacement = "_", QUOTA_GROUPING)) %>%
+  mutate(SHIPTO_CUSTOMER_NAME = gsub("THE", "", SHIPTO_CUSTOMER_NAME)) %>%
+  mutate(SHIPTO_CUSTOMER_NAME = gsub("  ", " ", SHIPTO_CUSTOMER_NAME)) %>%
+  mutate(SHIPTO_CUSTOMER_NAME = trimws(SHIPTO_CUSTOMER_NAME))
+
