@@ -38,3 +38,19 @@ raw_data_df =
   mutate(SHIPTO_CUSTOMER_NAME = gsub("  ", " ", SHIPTO_CUSTOMER_NAME)) %>%
   mutate(SHIPTO_CUSTOMER_NAME = trimws(SHIPTO_CUSTOMER_NAME))
 
+#------------------------------------------ Getting Ready the Data (df) for K-Means  ----------------------------
+q_time_df_aux = 
+  raw_data_df %>% 
+  select(SHIPTO_CUSTOMER_ID,
+         SHIPTO_CUSTOMER_NAME, 
+         GL_QRT,
+         QUOTA_GROUPING,
+         GROSS_SALES) %>% 
+  group_by(SHIPTO_CUSTOMER_NAME,
+           SHIPTO_CUSTOMER_ID,
+           GL_QRT,
+           QUOTA_GROUPING) %>% 
+  summarize(GROSS_SALES = sum(GROSS_SALES)) %>% 
+  ungroup() %>% 
+  unique()
+  
