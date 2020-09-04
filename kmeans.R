@@ -53,4 +53,27 @@ q_time_df_aux =
   summarize(GROSS_SALES = sum(GROSS_SALES)) %>% 
   ungroup() %>% 
   unique()
+
+q_time_map_table = 
+  q_time_df_aux %>% 
+  select(SHIPTO_CUSTOMER_NAME, 
+         SHIPTO_CUSTOMER_ID) %>% 
+  unique() %>% 
+  crossing(q_time_df_aux %>% 
+             select(GL_QRT) %>% 
+             unique()) %>% 
+  left_join(q_time_df_aux, 
+            by = c("SHIPTO_CUSTOMER_NAME", 
+                   "SHIPTO_CUSTOMER_ID",
+                   "GL_QRT")) %>% 
+  left_join(q_time_df_aux %>% 
+              select(QUOTA_GROUPING) %>% 
+              unique() %>% 
+              crossing(q_time_df_aux %>% 
+                         select(GL_QRT) %>% 
+                         unique()) %>% 
+              mutate(GROUP_TIME_FRAME = paste0(QUOTA_GROUPING, "_", GL_QRT)) %>% 
+              unique(), 
+            by = c("QUOTA_GROUPING", "GL_QRT") )
+
   
