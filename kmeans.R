@@ -87,3 +87,26 @@ df =
   spread(key = "GROUP_TIME_FRAME", 
          value = GROSS_SALES) %>%
   select(-"<NA>")
+
+
+# -------------------------  START
+ 
+
+#df[is.na(df)] <- 0 # THIS or Following
+
+SHIPTO_CUSTOMER_ID <- df$SHIPTO_CUSTOMER_ID
+df<- df %>% select(-SHIPTO_CUSTOMER_ID, -SHIPTO_CUSTOMER_NAME)
+df <- as.matrix(df)
+
+#best seed is 2
+#for (s in c(1:10)){
+#print(s)
+set.seed(2)
+RES <- dineof(df, n.max = NULL, ref.pos = NULL, delta.rms = 1e-05,method = "svds")
+#}
+
+df <- RES$Xa
+df <- as.data.frame(df)
+df <- cbind(SHIPTO_CUSTOMER_ID, df)
+
+# ------------------------- END
