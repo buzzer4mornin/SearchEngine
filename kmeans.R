@@ -110,3 +110,14 @@ df <- as.data.frame(df)
 df <- cbind(SHIPTO_CUSTOMER_ID, df)
 
 # ------------------------- END
+
+df <- aggregate(cbind(df$Canine_Vaccines_Q1,df$Canine_Vaccines_Q2,df$Canine_Vaccines_Q3,df$Canine_Vaccines_Q4,
+                      df$Endocrine_Products_Q1,df$Endocrine_Products_Q2,df$Endocrine_Products_Q3,df$Endocrine_Products_Q4,
+                      df$Essentials_Q1,df$Essentials_Q2,df$Essentials_Q3,df$Essentials_Q4,
+                      df$Feline_Vaccines_Q1,df$Feline_Vaccines_Q2,df$Feline_Vaccines_Q3,df$Feline_Vaccines_Q4,
+                      df$Home_Again_Q1, df$Home_Again_Q2, df$Home_Again_Q3, df$Home_Again_Q4,
+                      df$Ophthalmics_Antibiotics_Q1,df$Ophthalmics_Antibiotics_Q2,df$Ophthalmics_Antibiotics_Q3,df$Ophthalmics_Antibiotics_Q4,
+                      df$Otics_Q1,df$Otics_Q2,df$Otics_Q3,df$Otics_Q4,
+                      df$Parasiticides_Q1,df$Parasiticides_Q2,df$Parasiticides_Q3,df$Parasiticides_Q4,
+                      df$Rabies_Q1,df$Rabies_Q2,df$Rabies_Q3,df$Rabies_Q4,
+                      df$Sure_Petcare_Q1,df$Sure_Petcare_Q2,df$Sure_Petcare_Q3,df$Sure_Petcare_Q4), by=list(SHIPTO_CUSTOMER_ID=df$SHIPTO_CUSTOMER_ID), FUN=sum)
