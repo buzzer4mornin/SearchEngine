@@ -77,3 +77,13 @@ q_time_map_table =
             by = c("QUOTA_GROUPING", "GL_QRT") )
 
   
+df = 
+  q_time_map_table %>% 
+  select(SHIPTO_CUSTOMER_ID,
+         SHIPTO_CUSTOMER_NAME,
+         GROUP_TIME_FRAME,
+         GROSS_SALES) %>% 
+  unique() %>% 
+  spread(key = "GROUP_TIME_FRAME", 
+         value = GROSS_SALES) %>%
+  select(-"<NA>")
