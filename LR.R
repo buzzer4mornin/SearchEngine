@@ -42,3 +42,29 @@ raw_data_df =
   mutate(SHIPTO_CUSTOMER_NAME = gsub("THE", "", SHIPTO_CUSTOMER_NAME)) %>%
   mutate(SHIPTO_CUSTOMER_NAME = gsub("  ", " ", SHIPTO_CUSTOMER_NAME)) %>%
   mutate(SHIPTO_CUSTOMER_NAME = trimws(SHIPTO_CUSTOMER_NAME))
+
+
+#------------------------------------------- Prepare pre-datas for LeveneTest & WelchTest  ----------------------
+table <- raw_data_df %>% select(SHIPTO_CUSTOMER_ID, GL_MONTH, GL_QRT,QUOTA_GROUPING, GROSS_SALES)
+table$times <- 1
+table$GL_MONTH <- str_remove(table$GL_MONTH, "^0+")
+
+
+#following "table1_month" and "table2_month" dataframes are essentials and will be used for LeveneTest & WelchTest
+
+table1_month = 
+  table %>% 
+  select(SHIPTO_CUSTOMER_ID,
+         GL_MONTH,
+         GL_QRT,
+         QUOTA_GROUPING,
+         GROSS_SALES,times) %>% 
+  group_by(SHIPTO_CUSTOMER_ID,
+           GL_MONTH,
+           GL_QRT,
+           QUOTA_GROUPING) %>% 
+  summarize(GROSS_SALES = sum(GROSS_SALES), times = sum(times)) %>% 
+  ungroup() %>% 
+  unique()
+
+table1_month$GL_MONTH <- as.numeric(table1_month$GL_MONTH)
