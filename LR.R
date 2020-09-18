@@ -101,3 +101,19 @@ table2_month =
 
 table2_month <-  table2_month %>% rename(GROUP_TIME_FRAME = GROUP_TIME_FRAME.x)
 table2_month <-  table2_month %>% rename(GROUP_TIME_FRAME_QRT = GROUP_TIME_FRAME.y)
+
+
+# "customers_sales"  will be used later for join operation 
+customers_sales = 
+  table1_month %>% 
+  select(SHIPTO_CUSTOMER_ID,
+         GROSS_SALES) %>% 
+  group_by(SHIPTO_CUSTOMER_ID
+  ) %>% 
+  summarize(GROSS_SALES = sum(GROSS_SALES)) %>% 
+  ungroup() %>% 
+  unique()
+
+
+# Gathering All Product Names
+product_names <- unique(raw_data_df$QUOTA_GROUPING)
