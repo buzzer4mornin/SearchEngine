@@ -68,3 +68,36 @@ table1_month =
   unique()
 
 table1_month$GL_MONTH <- as.numeric(table1_month$GL_MONTH)
+
+table2_month = 
+  table1_month %>% 
+  select(SHIPTO_CUSTOMER_ID) %>% 
+  unique() %>% 
+  crossing(table1_month %>% 
+             select(GL_MONTH,GL_QRT) %>% 
+             unique()) %>% 
+  left_join(table1_month, 
+            by = c(
+                   "SHIPTO_CUSTOMER_ID",
+                   "GL_MONTH","GL_QRT")) %>% 
+  left_join(table1_month %>% 
+              select(QUOTA_GROUPING) %>% 
+              unique() %>% 
+              crossing(table1_month %>% 
+                         select(GL_MONTH) %>% 
+                         unique()) %>% 
+              mutate(GROUP_TIME_FRAME = paste0(QUOTA_GROUPING, "_", GL_MONTH)) %>% 
+              unique(), 
+            by = c("QUOTA_GROUPING", "GL_MONTH") ) %>%
+  left_join(table1_month %>% 
+              select(QUOTA_GROUPING) %>% 
+              unique() %>% 
+              crossing(table1_month %>% 
+                         select(GL_QRT) %>% 
+                         unique()) %>% 
+              mutate(GROUP_TIME_FRAME = paste0(QUOTA_GROUPING, "_", GL_QRT)) %>% 
+              unique(), 
+            by = c("QUOTA_GROUPING", "GL_QRT") )
+
+table2_month <-  table2_month %>% rename(GROUP_TIME_FRAME = GROUP_TIME_FRAME.x)
+table2_month <-  table2_month %>% rename(GROUP_TIME_FRAME_QRT = GROUP_TIME_FRAME.y)
