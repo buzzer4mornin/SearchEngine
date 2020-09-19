@@ -140,3 +140,30 @@ print(paste(val,"--",lTest[1,3]))
 
 'confidence level : 0.05
  Products having indifferent variances: NULL'
+
+#------------------------------------------- LeveneTest / Monthyly Purchase $$$ - on Log Data -------------------
+
+# GL_MONTH - from numeric to factor
+table1_month$GL_MONTH <- as.factor(table1_month$GL_MONTH)
+
+for (val in product_names)
+{
+df = 
+  raw_data_df %>%
+  select(SHIPTO_CUSTOMER_ID,
+         QUOTA_GROUPING,
+         GROSS_SALES,
+         GL_MONTH) %>%
+  filter(QUOTA_GROUPING == val) %>%
+  group_by(SHIPTO_CUSTOMER_ID, GL_MONTH) %>%
+  summarize(GROSS_SALES = log10(sum(GROSS_SALES, na.rm = T))) %>%
+  filter(GROSS_SALES != -Inf)
+
+df$GL_MONTH <- as.factor(df$GL_MONTH)
+
+lTest <- leveneTest(GROSS_SALES ~ GL_MONTH, df , center=mean)
+print(paste(val,"--",lTest[1,3]))
+}
+
+'confidence level: 0.05
+ Products having indifferent variances: Sure_Petcare'
