@@ -117,3 +117,26 @@ customers_sales =
 
 # Gathering All Product Names
 product_names <- unique(raw_data_df$QUOTA_GROUPING)
+
+#------------------------------------------- LeveneTest / Monthyly Purchase $$$ - on Normal Data ---------------- 
+
+# GL_MONTH - from numeric to factor
+table1_month$GL_MONTH <- as.factor(table1_month$GL_MONTH)
+
+for (val in product_names)
+{
+df = 
+  table1_month %>%
+  filter(QUOTA_GROUPING == val) %>%
+  group_by(SHIPTO_CUSTOMER_ID, GL_MONTH) %>%
+  summarize(GROSS_SALES = sum(GROSS_SALES, na.rm = T)) %>%
+  filter(GROSS_SALES != -Inf)
+
+df$GL_MONTH <- as.factor(df$GL_MONTH)
+
+lTest <- leveneTest(GROSS_SALES ~ GL_MONTH, df , center=mean)
+print(paste(val,"--",lTest[1,3]))
+}
+
+'confidence level : 0.05
+ Products having indifferent variances: NULL'
