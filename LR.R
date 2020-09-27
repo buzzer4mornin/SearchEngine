@@ -173,3 +173,13 @@ print(paste(val,"--",lTest[1,3]))
 
 # GL_MONTH - from factor to numeric
 table1_month$GL_MONTH <- as.numeric(table1_month$GL_MONTH)
+
+for (val in product_names)
+{
+  df = 
+    table1_month %>%
+    filter(QUOTA_GROUPING == val) 
+  
+  welch_test <- welch.test(GROSS_SALES ~ GL_MONTH, df,na.rm = TRUE,verbose=FALSE)
+  print(paste(val,"--",welch_test[3]))
+}
