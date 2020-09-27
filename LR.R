@@ -167,3 +167,9 @@ print(paste(val,"--",lTest[1,3]))
 
 'confidence level: 0.05
  Products having indifferent variances: Sure_Petcare'
+
+
+#-------------------------------- WelchTest / Monthyly Purchase $$$  - 12 month ----------------------=----------
+
+# GL_MONTH - from factor to numeric
+table1_month$GL_MONTH <- as.numeric(table1_month$GL_MONTH)
