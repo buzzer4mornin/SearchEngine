@@ -186,3 +186,8 @@ for (val in product_names)
 
 'confidence level: 0.05
  Products having indifferent variances: Sure_Petcare'
+
+#-------------------------------- WelchTest / Monthyly Purchase $$$  - first 6 months ---------------------------
+
+# GL_MONTH - from factor to numeric
+table1_month$GL_MONTH <- as.numeric(table1_month$GL_MONTH)
