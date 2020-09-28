@@ -201,3 +201,7 @@ for (val in product_names)
   welch_test <- welch.test(GROSS_SALES ~ GL_MONTH, df,na.rm = TRUE,verbose=FALSE)
   print(paste(val,"--",welch_test[3]))
 }
+
+
+'confidence level: 0.05
+ Products having indifferent variances: Sure_Petcare'
