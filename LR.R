@@ -228,3 +228,20 @@ for (val in product_names)
 
 # GL_MONTH - from factor to numeric
 table1_month$GL_MONTH <- as.numeric(table1_month$GL_MONTH)
+
+# printing Products having p-value > 0.05 (confidence level)
+for(x in c(0,3,6,9)){
+  print(switch(x+1,"<< January - March >>",".",".",  "<< April - June >>",".",".",
+                   "<< July - September >>",".",".", "<< October - December >>"))
+  for (val in product_names)
+  {
+    df = 
+      table1_month %>%
+      filter(QUOTA_GROUPING == val,GL_MONTH > x ,GL_MONTH < x + 4) 
+    
+    welch_test <- welch.test(GROSS_SALES ~ GL_MONTH, df,na.rm = TRUE,verbose=FALSE)
+    if(welch_test[3] > 0.05){
+      print(paste(val))
+    }
+  }
+}
