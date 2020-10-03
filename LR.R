@@ -245,3 +245,10 @@ for(x in c(0,3,6,9)){
     }
   }
 }
+
+'confidence level: 0.05
+ Products having similar means across months 
+ January - March    : Sure_Petcare
+ April - June       : Endocrine_Products, Essentials, Sure_Petcare
+ July - September   : Essentials, Ophthalmics_Antibiotics, Sure_Petcare
+ October - December : Essentials, Ophthalmics_Antibiotics, Sure_Petcare '
