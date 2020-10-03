@@ -224,3 +224,7 @@ for (val in product_names)
 'confidence level: 0.05
  Products having similar means: Sure_Petcare / Ophthalmics_Antibiotics / Essentials'
 
+#-------------------------------- WelchTest / Monthyly Purchase $$$  - Quarterly --------------------------------
+
+# GL_MONTH - from factor to numeric
+table1_month$GL_MONTH <- as.numeric(table1_month$GL_MONTH)
