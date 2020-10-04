@@ -257,3 +257,14 @@ for(x in c(0,3,6,9)){
 
 # GL_MONTH - from factor to numeric
 table1_month$GL_MONTH <- as.numeric(table1_month$GL_MONTH)
+
+for (val in product_names)
+{
+  df = 
+    table1_month %>%
+    filter(QUOTA_GROUPING == val) 
+  
+  welch_test_times <- welch.test(times ~ GL_MONTH, df,na.rm = TRUE,verbose=FALSE)
+  print(paste(val,"--",welch_test_times[3]))
+}
+
