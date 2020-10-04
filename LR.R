@@ -268,3 +268,5 @@ for (val in product_names)
   print(paste(val,"--",welch_test_times[3]))
 }
 
+'confidence level: 0.05
+ Products having indifferent variances: Sure_Petcare'
