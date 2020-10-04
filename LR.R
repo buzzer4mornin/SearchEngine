@@ -252,3 +252,8 @@ for(x in c(0,3,6,9)){
  April - June       : Endocrine_Products, Essentials, Sure_Petcare
  July - September   : Essentials, Ophthalmics_Antibiotics, Sure_Petcare
  October - December : Essentials, Ophthalmics_Antibiotics, Sure_Petcare '
+
+#-------------------------------- WelchTest / Monthly Times - 12 month  -----------------------------------------  
+
+# GL_MONTH - from factor to numeric
+table1_month$GL_MONTH <- as.numeric(table1_month$GL_MONTH)
