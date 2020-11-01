@@ -335,3 +335,8 @@ for(x in c(0,3,6,9)){
  April - June       : Home_Again, Essentials, Ophthalmics_Antibiotics, Sure_Petcare
  July - September   : Otics, Essentials, Ophthalmics_Antibiotics, Sure_Petcare
  October - December : Rabies, Essentialsl, Ophthalmics_Antibiotics, Sure_Petcare '
+
+#-------------------------------- Welch's t-test - 2 groups comparison ------------------------------------------
+
+# GL_MONTH - from factor to numeric
+table2_month$GL_MONTH <- as.numeric(table2_month$GL_MONTH)
