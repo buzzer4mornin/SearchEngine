@@ -350,3 +350,10 @@ Monthly_Purchase =
   spread(key = "GROUP_TIME_FRAME", 
          value = GROSS_SALES) %>%
   select(-"<NA>") 
+
+Monthly_Purchase$SHIPTO_CUSTOMER_NAME <- NULL
+Monthly_Purchase[is.na(Monthly_Purchase)] <- 0
+Monthly_Purchase <- aggregate(cbind(Monthly_Purchase[,c(2:121)]), 
+                              by=list(SHIPTO_CUSTOMER_ID=Monthly_Purchase$SHIPTO_CUSTOMER_ID), FUN=sum)
+
+Monthly_Purchase <- Monthly_Purchase %>% replace_with_na_all(condition = ~.x == 0)
