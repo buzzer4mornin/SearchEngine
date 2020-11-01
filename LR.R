@@ -340,3 +340,13 @@ for(x in c(0,3,6,9)){
 
 # GL_MONTH - from factor to numeric
 table2_month$GL_MONTH <- as.numeric(table2_month$GL_MONTH)
+
+Monthly_Purchase = 
+  table2_month %>% 
+  select(SHIPTO_CUSTOMER_ID,
+         GROUP_TIME_FRAME,
+         GROSS_SALES) %>% 
+  unique() %>% 
+  spread(key = "GROUP_TIME_FRAME", 
+         value = GROSS_SALES) %>%
+  select(-"<NA>") 
