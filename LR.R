@@ -369,3 +369,13 @@ for (product in product_names)
     while(i <= 11){
       product_b = paste(product, i+1, sep="_")
       #print(product_b)
+      col1 <-  Monthly_Purchase %>% select(product_a)
+      col2 <-  Monthly_Purchase %>% select(product_b)
+      result <- t.test(col1,col2, alternative="two.sided", var.equal=FALSE)
+      if(result[3] >= 0.05){
+      print(paste(product_a,"vs",product_b,"--",result[3]))
+        }
+      i = i+1
+    }
+    }
+}
