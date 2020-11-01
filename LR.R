@@ -357,3 +357,15 @@ Monthly_Purchase <- aggregate(cbind(Monthly_Purchase[,c(2:121)]),
                               by=list(SHIPTO_CUSTOMER_ID=Monthly_Purchase$SHIPTO_CUSTOMER_ID), FUN=sum)
 
 Monthly_Purchase <- Monthly_Purchase %>% replace_with_na_all(condition = ~.x == 0)
+
+months <- c(1:11)
+
+# printing matching couples
+for (product in product_names)
+{
+  for(i in months){
+    product_a = paste(product, i, sep="_")
+    #print(product_a)
+    while(i <= 11){
+      product_b = paste(product, i+1, sep="_")
+      #print(product_b)
