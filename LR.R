@@ -328,3 +328,10 @@ for(x in c(0,3,6,9)){
     }
   }
 }
+
+'confidence level: 0.05
+ Products having similar means across months 
+ January - March    : Rabies, Sure_Petcare
+ April - June       : Home_Again, Essentials, Ophthalmics_Antibiotics, Sure_Petcare
+ July - September   : Otics, Essentials, Ophthalmics_Antibiotics, Sure_Petcare
+ October - December : Rabies, Essentialsl, Ophthalmics_Antibiotics, Sure_Petcare '
