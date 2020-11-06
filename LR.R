@@ -393,3 +393,7 @@ Monthly_Times =
   unique() %>% 
   spread(key = "GROUP_TIME_FRAME", 
          value = times)
+
+Monthly_Times[is.na(Monthly_Times)] <- 0
+Monthly_Times <- aggregate(cbind(Monthly_Times[,c(2:121)]), 
+                           by=list(SHIPTO_CUSTOMER_ID=Monthly_Times$SHIPTO_CUSTOMER_ID), FUN=sum)
