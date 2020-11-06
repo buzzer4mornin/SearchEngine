@@ -397,3 +397,14 @@ Monthly_Times =
 Monthly_Times[is.na(Monthly_Times)] <- 0
 Monthly_Times <- aggregate(cbind(Monthly_Times[,c(2:121)]), 
                            by=list(SHIPTO_CUSTOMER_ID=Monthly_Times$SHIPTO_CUSTOMER_ID), FUN=sum)
+
+
+Monthly_Times <- inner_join(Monthly_Times,customers_sales)
+Monthly_Times$SHIPTO_CUSTOMER_ID <- NULL
+Monthly_Times[1:121]<- lapply(Monthly_Times[1:121], as.numeric)
+
+
+model1 <- lm(GROSS_SALES ~ .,
+             data=Monthly_Times)
+summary(model1)
+#Multiple R-squared:  0.6104,	Adjusted R-squared:  0.6074 
