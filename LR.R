@@ -379,3 +379,17 @@ for (product in product_names)
     }
     }
 }
+
+
+#------------------------------------------- LR Monthly - Before welch test  ----------------------------------------------
+
+'------ Linear Regression on Monthly_Times dataframe. (0 values filled instead of NAs) ------'
+
+Monthly_Times = 
+  table2_month %>% 
+  select(SHIPTO_CUSTOMER_ID,
+         GROUP_TIME_FRAME,
+         times) %>% 
+  unique() %>% 
+  spread(key = "GROUP_TIME_FRAME", 
+         value = times)
