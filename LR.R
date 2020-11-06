@@ -453,3 +453,8 @@ Monthly_Times <- Monthly_Times %>% select(-Ophthalmics_Antibiotics_7,
                                           -Ophthalmics_Antibiotics_8,-Ophthalmics_Antibiotics_9,
                                           -Ophthalmics_Antibiotics_10,-Ophthalmics_Antibiotics_11,
                                           -Ophthalmics_Antibiotics_12)
+
+model2 <- lm(GROSS_SALES ~ .,
+             data=Monthly_Times)
+summary(model2)
+#Multiple R-squared:  0.6073,	Adjusted R-squared:  0.605 
