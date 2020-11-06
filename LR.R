@@ -417,3 +417,10 @@ summary(model1)
  April - June       : Endocrine_Products, Essentials, Sure_Petcare
  July - September   : Essentials, Ophthalmics_Antibiotics, Sure_Petcare
  October - December : Essentials, Ophthalmics_Antibiotics, Sure_Petcare '
+
+Monthly_Times <- mutate(Monthly_Times ,Sure_Petcare_mean = rowMeans(select(Monthly_Times,Sure_Petcare_1,Sure_Petcare_2,
+                                                                           Sure_Petcare_3,Sure_Petcare_4,
+                                                                           Sure_Petcare_5,Sure_Petcare_6,
+                                                                           Sure_Petcare_7,Sure_Petcare_8,
+                                                                           Sure_Petcare_9,Sure_Petcare_10,
+                                                                           Sure_Petcare_11,Sure_Petcare_12),na.rm = TRUE))
