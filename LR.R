@@ -408,3 +408,12 @@ model1 <- lm(GROSS_SALES ~ .,
              data=Monthly_Times)
 summary(model1)
 #Multiple R-squared:  0.6104,	Adjusted R-squared:  0.6074 
+
+#------------------------------------------- LR Monthly - After welch test (adjustment according to Monthyly Purchase $$$  - Quarterly) --------------------
+
+#First run "LR before welch test" section to get Monthly_Times dataframe ready...
+'Products having similar means across months 
+ January - March    : Sure_Petcare
+ April - June       : Endocrine_Products, Essentials, Sure_Petcare
+ July - September   : Essentials, Ophthalmics_Antibiotics, Sure_Petcare
+ October - December : Essentials, Ophthalmics_Antibiotics, Sure_Petcare '
