@@ -495,3 +495,13 @@ Monthly_Times <- mutate(Monthly_Times ,Ophthalmics_Antibiotics_mean = rowMeans(s
                                                                                       Ophthalmics_Antibiotics_8,Ophthalmics_Antibiotics_9,
                                                                                       Ophthalmics_Antibiotics_10,Ophthalmics_Antibiotics_11,
                                                                                       Ophthalmics_Antibiotics_12),na.rm = TRUE))
+
+Monthly_Times <- select(Monthly_Times,-starts_with("Sure_Petcare"))
+Monthly_Times <- Monthly_Times %>% select(-Rabies_1,-Rabies_2,-Rabies_3,-Rabies_10,-Rabies_11,-Rabies_12)
+Monthly_Times <- Monthly_Times %>% select(-Home_Again_4,-Home_Again_5,-Home_Again_6)
+Monthly_Times <- Monthly_Times %>% select(-Otics_7,-Otics_8,-Otics_9)
+Monthly_Times <- Monthly_Times %>% select(-Essentials_4,-Essentials_5,
+                                          -Essentials_6,-Essentials_7,
+                                          -Essentials_8,-Essentials_9,
+                                          -Essentials_10,-Essentials_11,
+                                          -Essentials_12)
