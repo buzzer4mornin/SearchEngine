@@ -613,3 +613,7 @@ Quarterly_Times =
   unique() %>% 
   spread(key = "GROUP_TIME_FRAME_QRT", 
          value = times)
+
+Quarterly_Times[is.na(Quarterly_Times)] <- 0
+Quarterly_Times <- aggregate(cbind(Quarterly_Times[,c(2:41)]), 
+                           by=list(SHIPTO_CUSTOMER_ID=Quarterly_Times$SHIPTO_CUSTOMER_ID), FUN=sum)
