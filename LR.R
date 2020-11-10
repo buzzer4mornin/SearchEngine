@@ -543,3 +543,12 @@ model4 <- lm(formula = GROSS_SALES ~ Canine_Vaccines_1 + Canine_Vaccines_10 +
                Essentials_mean + Ophthalmics_Antibiotics_mean, data = Monthly_Times) # 66 features
 summary(model4)
 # Multiple R-squared:  0.6037,	Adjusted R-squared:  0.602
+
+#------------------------------------------- LR Monthly - with Dineof() -----------------------------------------
+'--------               Running dineof() to fill NA values in Monthly_Times dataframe                          
+ --------                    Then running Linear Model on data to see the results                              
+ --------      NOTE: First run "LR Monthly - Before welch test" section to get Monthly_Times dataframe ready'
+
+Monthly_Times <- Monthly_Times %>% select(-GROSS_SALES)
+Monthly_Times <- Monthly_Times %>% replace_with_na_all(condition = ~.x == 0)
+Monthly_Times <- as.matrix(Monthly_Times)
