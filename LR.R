@@ -559,3 +559,7 @@ set.seed(3)
 #print(s)
 RES <- dineof(Monthly_Times, n.max = NULL, ref.pos = NULL, delta.rms = 1e-05, method = "svds")
 #}
+
+dineof_df = as.data.frame(RES$Xa)
+Monthly_Times <- as.data.frame(Monthly_Times)
+dineof_df$GROSS_SALES <- customers_sales$GROSS_SALES
