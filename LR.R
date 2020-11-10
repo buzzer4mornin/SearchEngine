@@ -621,3 +621,9 @@ Quarterly_Times <- aggregate(cbind(Quarterly_Times[,c(2:41)]),
 Quarterly_Times <- inner_join(Quarterly_Times,customers_sales)
 Quarterly_Times$SHIPTO_CUSTOMER_ID <- NULL
 Quarterly_Times[1:41]<- lapply(Quarterly_Times[1:41], as.numeric)
+
+model7 <- lm(GROSS_SALES ~ .,
+             data=Quarterly_Times)
+
+summary(model7)
+# Multiple R-squared:  0.5206,	Adjusted R-squared:  0.5193 
