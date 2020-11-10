@@ -587,3 +587,6 @@ model6 <- lm(GROSS_SALES ~ .,
              data=pca_df)
 summary(model6)
 #Multiple R-squared:  0.3033,	Adjusted R-squared:  0.3031 
+
+#------------------------------------------- LR Quarterly -------------------------------------------------------
+Quarterly_Times <- table2_month
