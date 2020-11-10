@@ -563,3 +563,8 @@ RES <- dineof(Monthly_Times, n.max = NULL, ref.pos = NULL, delta.rms = 1e-05, me
 dineof_df = as.data.frame(RES$Xa)
 Monthly_Times <- as.data.frame(Monthly_Times)
 dineof_df$GROSS_SALES <- customers_sales$GROSS_SALES
+
+model5 <- lm(GROSS_SALES ~ .,
+             data=dineof_df)
+summary(model5)
+#Multiple R-squared:  ~ 0.4828,	Adjusted R-squared:  ~ 0.4787
