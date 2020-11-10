@@ -568,3 +568,7 @@ model5 <- lm(GROSS_SALES ~ .,
              data=dineof_df)
 summary(model5)
 #Multiple R-squared:  ~ 0.4828,	Adjusted R-squared:  ~ 0.4787
+
+#------------------------------------------- LR Monthly - After PCA -----------------------------------------
+'---------------------               Passing dineof results to PCA                   --------------------
+ ------------               Then running Linear Model from Principal Components            -------------'
