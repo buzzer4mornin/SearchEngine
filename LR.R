@@ -582,3 +582,8 @@ plot(pca$x[,1],pca$x[,2])
 pca_df <- as.data.frame(pca$x)
 pca_df <- pca_df[,1:4]  #selecting first 4 Principal Components
 pca_df$GROSS_SALES <- customers_sales$GROSS_SALES
+
+model6 <- lm(GROSS_SALES ~ .,
+             data=pca_df)
+summary(model6)
+#Multiple R-squared:  0.3033,	Adjusted R-squared:  0.3031 
