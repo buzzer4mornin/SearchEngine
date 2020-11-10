@@ -477,3 +477,6 @@ Monthly_Times <- mutate(Monthly_Times ,Sure_Petcare_mean = rowMeans(select(Month
 
 Monthly_Times <- mutate(Monthly_Times ,Rabies_mean = rowMeans(select(Monthly_Times,Rabies_1,Rabies_2,
                                                                      Rabies_3,Rabies_10,Rabies_11,Rabies_12),na.rm = TRUE))
+
+Monthly_Times <- mutate(Monthly_Times ,Home_Again_mean = rowMeans(select(Monthly_Times,Home_Again_4,Home_Again_5,
+                                                                         Home_Again_6),na.rm = TRUE))
