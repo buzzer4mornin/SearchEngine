@@ -480,3 +480,6 @@ Monthly_Times <- mutate(Monthly_Times ,Rabies_mean = rowMeans(select(Monthly_Tim
 
 Monthly_Times <- mutate(Monthly_Times ,Home_Again_mean = rowMeans(select(Monthly_Times,Home_Again_4,Home_Again_5,
                                                                          Home_Again_6),na.rm = TRUE))
+
+Monthly_Times <- mutate(Monthly_Times ,Otics_mean = rowMeans(select(Monthly_Times,Otics_7,Otics_8,
+                                                                    Otics_9),na.rm = TRUE))
