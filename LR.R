@@ -516,3 +516,8 @@ model3 <- lm(GROSS_SALES ~ .,
              data=Monthly_Times)
 summary(model3)
 #Multiple R-squared:  0.604,	Adjusted R-squared:  0.6018
+
+#------------------------------------------- LR Monthly - Stepwise Regression after WelchTest ----------------------------------
+'Stepwise Regression is run on linear regression model of previous section: """LR Monthly - After welch test (adjustment according to Monthyly Times   - Quarterly)"""'
+
+step(model3, direction = "both")
