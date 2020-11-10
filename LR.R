@@ -552,3 +552,10 @@ summary(model4)
 Monthly_Times <- Monthly_Times %>% select(-GROSS_SALES)
 Monthly_Times <- Monthly_Times %>% replace_with_na_all(condition = ~.x == 0)
 Monthly_Times <- as.matrix(Monthly_Times)
+
+# --- Best seed is 3 --- 
+#for (s in 1:10){
+set.seed(3)
+#print(s)
+RES <- dineof(Monthly_Times, n.max = NULL, ref.pos = NULL, delta.rms = 1e-05, method = "svds")
+#}
