@@ -572,3 +572,9 @@ summary(model5)
 #------------------------------------------- LR Monthly - After PCA -----------------------------------------
 '---------------------               Passing dineof results to PCA                   --------------------
  ------------               Then running Linear Model from Principal Components            -------------'
+
+pca <- prcomp(RES$Xa, center= TRUE, scale = TRUE)
+pca.var <- pca$sdev^2
+pca.var.per <- round(pca.var/sum(pca.var)*100, 1)
+barplot(pca.var.per, main="Scree Plot", xlab="Principal Component", ylab="Percent Variation")
+plot(pca$x[,1],pca$x[,2])
