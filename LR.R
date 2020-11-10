@@ -521,3 +521,25 @@ summary(model3)
 'Stepwise Regression is run on linear regression model of previous section: """LR Monthly - After welch test (adjustment according to Monthyly Times   - Quarterly)"""'
 
 step(model3, direction = "both")
+
+model4 <- lm(formula = GROSS_SALES ~ Canine_Vaccines_1 + Canine_Vaccines_10 + 
+               Canine_Vaccines_11 + Canine_Vaccines_12 + Canine_Vaccines_2 + 
+               Canine_Vaccines_3 + Canine_Vaccines_4 + Canine_Vaccines_5 + 
+               Canine_Vaccines_6 + Canine_Vaccines_7 + Canine_Vaccines_8 + 
+               Canine_Vaccines_9 + Endocrine_Products_1 + Endocrine_Products_10 + 
+               Endocrine_Products_12 + Endocrine_Products_3 + Endocrine_Products_6 + 
+               Endocrine_Products_7 + Endocrine_Products_8 + Essentials_1 + 
+               Essentials_2 + Feline_Vaccines_1 + Feline_Vaccines_10 + Feline_Vaccines_11 + 
+               Feline_Vaccines_12 + Feline_Vaccines_2 + Feline_Vaccines_3 + 
+               Feline_Vaccines_4 + Feline_Vaccines_5 + Feline_Vaccines_7 + 
+               Feline_Vaccines_8 + Feline_Vaccines_9 + Home_Again_1 + Home_Again_10 + 
+               Home_Again_11 + Home_Again_12 + Home_Again_2 + Home_Again_9 + 
+               Ophthalmics_Antibiotics_1 + Otics_1 + Otics_10 + Otics_11 + 
+               Otics_4 + Otics_5 + Otics_6 + Parasiticides_1 + Parasiticides_10 + 
+               Parasiticides_11 + Parasiticides_12 + Parasiticides_2 + Parasiticides_3 + 
+               Parasiticides_4 + Parasiticides_5 + Parasiticides_6 + Parasiticides_7 + 
+               Parasiticides_8 + Parasiticides_9 + Rabies_5 + Rabies_6 + 
+               Rabies_8 + Rabies_9 + Rabies_mean + Home_Again_mean + Otics_mean + 
+               Essentials_mean + Ophthalmics_Antibiotics_mean, data = Monthly_Times) # 66 features
+summary(model4)
+# Multiple R-squared:  0.6037,	Adjusted R-squared:  0.602
