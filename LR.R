@@ -617,3 +617,7 @@ Quarterly_Times =
 Quarterly_Times[is.na(Quarterly_Times)] <- 0
 Quarterly_Times <- aggregate(cbind(Quarterly_Times[,c(2:41)]), 
                            by=list(SHIPTO_CUSTOMER_ID=Quarterly_Times$SHIPTO_CUSTOMER_ID), FUN=sum)
+
+Quarterly_Times <- inner_join(Quarterly_Times,customers_sales)
+Quarterly_Times$SHIPTO_CUSTOMER_ID <- NULL
+Quarterly_Times[1:41]<- lapply(Quarterly_Times[1:41], as.numeric)
