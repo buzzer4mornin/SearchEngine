@@ -489,3 +489,9 @@ Monthly_Times <- mutate(Monthly_Times ,Essentials_mean = rowMeans(select(Monthly
                                                                          Essentials_8,Essentials_9,
                                                                          Essentials_10,Essentials_11,
                                                                          Essentials_12),na.rm = TRUE))
+
+Monthly_Times <- mutate(Monthly_Times ,Ophthalmics_Antibiotics_mean = rowMeans(select(Monthly_Times,Ophthalmics_Antibiotics_4,Ophthalmics_Antibiotics_5,
+                                                                                      Ophthalmics_Antibiotics_6,Ophthalmics_Antibiotics_7,
+                                                                                      Ophthalmics_Antibiotics_8,Ophthalmics_Antibiotics_9,
+                                                                                      Ophthalmics_Antibiotics_10,Ophthalmics_Antibiotics_11,
+                                                                                      Ophthalmics_Antibiotics_12),na.rm = TRUE))
