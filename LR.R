@@ -578,3 +578,7 @@ pca.var <- pca$sdev^2
 pca.var.per <- round(pca.var/sum(pca.var)*100, 1)
 barplot(pca.var.per, main="Scree Plot", xlab="Principal Component", ylab="Percent Variation")
 plot(pca$x[,1],pca$x[,2])
+
+pca_df <- as.data.frame(pca$x)
+pca_df <- pca_df[,1:4]  #selecting first 4 Principal Components
+pca_df$GROSS_SALES <- customers_sales$GROSS_SALES
