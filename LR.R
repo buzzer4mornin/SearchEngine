@@ -590,3 +590,9 @@ summary(model6)
 
 #------------------------------------------- LR Quarterly -------------------------------------------------------
 Quarterly_Times <- table2_month
+
+Quarterly_Times <- Quarterly_Times %>% 
+  select(SHIPTO_CUSTOMER_ID,GROUP_TIME_FRAME_QRT,times)
+  group_by(SHIPTO_CUSTOMER_ID,
+           GROUP_TIME_FRAME_QRT) %>%
+  summarize(times = sum(times, na.rm = T))
